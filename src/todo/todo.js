@@ -1,4 +1,3 @@
-import NewTodo from "./NewTodo";
 import { dummyData} from "../dummydata/dummyData"
 import { useEffect, useState } from "react";
 
@@ -18,7 +17,11 @@ function Todo() {
             )}
         </ul>
         
-        <NewTodo />
+        <label type="text" name="New To Do" for="new_to_do">
+            <p>New Todo</p>
+            <input type="text" name="new_to_do" placeholder="To Do"></input>
+        </label>
+
         <button onClick={ () => setTodos([...todos, NewTodo])  }>add to do</button>
        
     </>
