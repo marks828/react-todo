@@ -6,19 +6,14 @@ function Todo() {
 
 
     const [todos, setTodos] = useState(dummyData);
-    // useEffect( () => {
-    //     console.log(todos)
-    // }, [todos])
-    // const [count, setCount] = useState(0);
+    const [input, setInput] = useState("")
     
     return(
     <> 
         <ul>
-            {dummyData.map((todoItem) =>
+            {todos.map((todoItem) =>
                 <li>
                     {todoItem.todoDescription}
-                    {console.log(todoItem)}
-                    
                 </li>
             )}
         </ul>
