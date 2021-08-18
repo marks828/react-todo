@@ -6,7 +6,10 @@ function Todo() {
 
 
     const [todos, settodos] = useState();
-    const [count, setCount] = useState(0);
+    useEffect( () => {
+        console.log(todos)
+    }, [todos])
+    // const [count, setCount] = useState(0);
 
     return(
     <> 
@@ -19,10 +22,12 @@ function Todo() {
                 </li>
             )}
         </ul>
-        {count}
-        <button onClick={() => setCount(count + 1)}>Count</button>
-        <button onClick={() => setCount(0)}>reset</button>
+        {/* {count} */}
+        {/* <button onClick={() => setCount(count + 1)}>Count</button> */}
+        {/* <button onClick={() => setCount(0)}>reset</button> */}
         <NewTodo />
+        <button onClick={ () =>  }></button>
+       
     </>
     );
 }
