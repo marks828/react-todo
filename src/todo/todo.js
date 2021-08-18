@@ -7,10 +7,6 @@ function Todo() {
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState("")
     
-    onChange() => {
-        
-    }
-    
     return(
     <> 
         <ul>
@@ -26,7 +22,7 @@ function Todo() {
             <input type="text" name="new_to_do" placeholder="To Do" value={input} onChange={ (event) => setInput(event.target.value) }></input>
         </label>
 
-        <button onClick={ () => setTodos([...todos, NewTodo])  }>add to do</button>
+        <button onClick={ () => setTodos([...todos, {description: input, id: todos.length + 1}])  }>add to do</button>
        
     </>
     );
