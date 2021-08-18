@@ -10,7 +10,7 @@ function Todo() {
     //     console.log(todos)
     // }, [todos])
     // const [count, setCount] = useState(0);
-
+    
     return(
     <> 
         <ul>
@@ -22,11 +22,9 @@ function Todo() {
                 </li>
             )}
         </ul>
-        {/* {count} */}
-        {/* <button onClick={() => setCount(count + 1)}>Count</button> */}
-        {/* <button onClick={() => setCount(0)}>reset</button> */}
+        
         <NewTodo />
-        <button onClick={ () => setTodos(todos +)  }></button>
+        <button onClick={ () => setTodos([...todos, NewTodo])  }>add to do</button>
        
     </>
     );
