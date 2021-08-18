@@ -26,7 +26,7 @@ function Todo() {
         {/* <button onClick={() => setCount(count + 1)}>Count</button> */}
         {/* <button onClick={() => setCount(0)}>reset</button> */}
         <NewTodo />
-        <button onClick={ () => setTodos  }></button>
+        <button onClick={ () => setTodos(todos +)  }></button>
        
     </>
     );
