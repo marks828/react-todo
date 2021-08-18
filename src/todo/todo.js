@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 function Todo() {
 
 
-    const [todos, settodos] = useState();
-    useEffect( () => {
-        console.log(todos)
-    }, [todos])
+    const [todos, setTodos] = useState(dummyData);
+    // useEffect( () => {
+    //     console.log(todos)
+    // }, [todos])
     // const [count, setCount] = useState(0);
 
     return(
@@ -26,7 +26,7 @@ function Todo() {
         {/* <button onClick={() => setCount(count + 1)}>Count</button> */}
         {/* <button onClick={() => setCount(0)}>reset</button> */}
         <NewTodo />
-        <button onClick={ () =>  }></button>
+        <button onClick={ () => setTodos  }></button>
        
     </>
     );
