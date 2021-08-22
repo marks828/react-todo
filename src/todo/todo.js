@@ -3,16 +3,24 @@ import { useEffect, useState } from "react";
 
 function Todo() {
 
-
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState("")
-    
+    // const [checked, setChecked] = useState(false)
+
+    function handleChange(e){
+        console.log(e.target.checked)
+        boxChecked = e.target.checked
+
+    }
     return(
     <> 
         <ul>
             {todos.map((todoItem) =>
                 <li>
-                    {todoItem.todoDescription}
+                    <p>
+                        <input type="checkbox" onChange={ handleChange }></input>
+                        {todoItem.todoDescription}
+                    </p>
                 </li>
             )}
         </ul>
