@@ -14,6 +14,22 @@ function Todo(props) {
         setInput('')
     }
 
+    function toggleTodoCompleted(id) {
+        const updatedTodos = todos.map(todo => {
+            if(id === todo.id){
+                return {...todo, completed: !todo.completed}
+            }
+            return todo;
+        });
+        setTodos(updatedTodos)
+    }
+
+    function deleteTodo(id){
+        console.log(id)
+    }
+
+    
+
     function editTodo(id, newName) {
         const editedTodoList = todos.map(task => {
         // if this task has the same ID as the edited task
@@ -25,6 +41,8 @@ function Todo(props) {
         });
         setTodos(editedTodoList);
     }
+
+
 
     const isEditingisFalse = (
         <> 
@@ -56,7 +74,6 @@ function Todo(props) {
             {todos.map((todoItem) =>
                 <li>
                     <p id={todoItem.id}>
-                        <input type="checkbox"></input>
                         {todoItem.todoDescription}
                     </p>
                     <button>Save</button>
@@ -80,7 +97,12 @@ function Todo(props) {
             {todos.map((todoItem) =>
                 <li>
                     <p id={todoItem.id}>
-                        <input type="checkbox"></input>
+                        <input 
+                            type="checkbox"
+                            defaultChecked={todoItem.completed}
+                            onChange={() => toggleTodoCompleted(todoItem.id)}
+                        >
+                        </input>
                         {todoItem.todoDescription}
                     </p>
                     <button>Edit</button>
