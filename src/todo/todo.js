@@ -1,36 +1,39 @@
 import { dummyData} from "../dummydata/dummyData"
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import {nanoid} from 'nanoid'
 
-function Todo() {
+function Todo(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState("")
     // const [checked, setChecked] = useState(false)
 
-    function handleChange(e){
-        console.log(e.target.checked)
-        boxChecked = e.target.checked
-
+    function handleSubmit(e){
+        e.preventDefault()
     }
+    
     return(
     <> 
         <ul>
             {todos.map((todoItem) =>
                 <li>
-                    <p>
-                        <input type="checkbox" onChange={ handleChange }></input>
+                    <p id={todoItem.id}>
+                        <input type="checkbox"></input>
                         {todoItem.todoDescription}
                     </p>
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </li>
             )}
         </ul>
-        
-        <label type="text" name="New To Do" for="new_to_do">
-            <p>New Todo</p>
-            <input type="text" name="new_to_do" placeholder="To Do" value={input} onChange={ (event) => setInput(event.target.value) }></input>
-        </label>
+        <form onSubmit={handleSubmit}>
+            <label type="text" name="New To Do" for="new_to_do">
+                <p>New Todo</p>
+                <input type="text" name="new_to_do" placeholder="To Do" value={input} onChange={ (event) => setInput(event.target.value) }></input>
+            </label>
+            <button id="add-new-task" onClick={ () => setTodos([...todos, {todoDescription: input, id: nanoid()}])  }>add to do</button>
+        </form>
 
-        <button onClick={ () => setTodos([...todos, {todoDescription: input, id: todos.length + 1}])  }>add to do</button>
        
     </>
     );
