@@ -28,21 +28,6 @@ function Todo(props) {
         console.log(id)
     }
 
-    
-
-    function editTodo(id, newName) {
-        const editedTodoList = todos.map(task => {
-        // if this task has the same ID as the edited task
-            if (id === task.id) {
-            //
-            return {...task, name: newName}
-            }
-            return task;
-        });
-        setTodos(editedTodoList);
-    }
-
-
 
     const isEditingisFalse = (
         <> 
