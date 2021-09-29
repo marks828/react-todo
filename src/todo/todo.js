@@ -16,11 +16,14 @@ function Todo(props) {
 
     function toggleTodoCompleted(id) {
         const updatedTodos = todos.map(todo => {
+            console.log(id)
+            console.log(todo.id)
             if(id === todo.id){
                 return {...todo, completed: !todo.completed}
             }
             return todo;
         });
+        // console.log(updatedTodos)
         setTodos(updatedTodos)
     }
 
@@ -84,8 +87,7 @@ function Todo(props) {
                     <p id={todoItem.id}>
                         <input 
                             type="checkbox"
-                            defaultChecked={todoItem.completed}
-                            onChange={() => toggleTodoCompleted(todoItem.id)}
+                            onChange={() => toggleTodoCompleted(todoItem.completed)}
                         >
                         </input>
                         {todoItem.todoDescription}
