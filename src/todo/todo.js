@@ -11,7 +11,7 @@ function Todo(props) {
     function handleSubmit(e){
         e.preventDefault();
         setInput('')
-    }
+    } 
 
     function toggleTodoCompleted(id) {
         const updatedTodos = todos.map(todo => {
