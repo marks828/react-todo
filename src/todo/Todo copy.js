@@ -83,7 +83,7 @@ function Todo2(props) {
                         ></input>
                     </label>
                     <button>Save</button>
-                    <button onClick={()=> setIsEditing(false)}>Cancel</button>
+                    <button onClick={()=> editTodo(setIsEditing(false))}>Cancel</button>
                 </form>
                 </li>
             )}
@@ -93,7 +93,7 @@ function Todo2(props) {
     
     return(
         <> 
-            {isEditing ? isEditingisFalse : isEditingisTrue}
+            {isEditing ? isEditingisTrue : isEditingisFalse}
         </>
     );
 }

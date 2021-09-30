@@ -2,11 +2,13 @@ export const dummyData = [
     {
         id:0,
         todoDescription: "work",
-        completed: false
+        completed: false,
+        isEditing: false
     },
     {
         id:1,
         todoDescription: "sleep",
-        completed: false
+        completed: false,
+        isEditing: false
     }
 ]
