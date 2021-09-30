@@ -31,8 +31,9 @@ function Todo(props) {
 
     function updateEditingStatus(id) {
         const editedTodoList = todos.map(todo =>{
+            // console.log(todo.isEditing)
             if(id === todo.id){
-                return{...todo, isEditing: !todo.isEditing}
+                return{...todo, isBeingEdited: !todo.isBeingEdited}
             };
             return todo
         })
@@ -45,7 +46,7 @@ function Todo(props) {
         <ul>
             {todos.map((todoItem) =>
                 <li>
-                    {todoItem.isEditing ? <p>hello</p> : <input></input>}
+                    {todoItem.isEditing ?  <input></input> : <p>hello</p>}
                     <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
                         <input 
                             type="checkbox"
@@ -55,7 +56,7 @@ function Todo(props) {
                         {todoItem.todoDescription}
                     </p>
                     <button
-                        onClick={()=> updateEditingStatus(todoItem.id)}
+                        onClick={()=> updateEditingStatus(todoItem.ed)}
                     >Edit</button>
                     <button 
                         onClick={ () => deleteTodo(todoItem.id)}
