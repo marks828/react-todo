@@ -2,7 +2,7 @@ import { dummyData} from "../dummydata/dummyData"
 import { useState } from "react";
 import {nanoid} from 'nanoid'
 
-function Todo(props) {
+function Todo2(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState('')
@@ -49,7 +49,7 @@ function Todo(props) {
                         <input type="checkbox"></input>
                         {todoItem.todoDescription}
                     </p>
-                    <button onClick={ () => editTodo() }>Edit</button>
+                    <button onClick={ () => setIsEditing(true) }>Edit</button>
                     <button>Delete</button>
                 </li>
             )}
@@ -83,7 +83,7 @@ function Todo(props) {
                         ></input>
                     </label>
                     <button>Save</button>
-                    <button>Cancel</button>
+                    <button onClick={()=> setIsEditing(false)}>Cancel</button>
                 </form>
                 </li>
             )}
@@ -94,7 +94,7 @@ function Todo(props) {
     return(
         <> 
         {isEditing ? isEditingisFalse : isEditingisTrue}
-        <ul>
+        {/* <ul>
             {todos.map((todoItem) =>
                 <li>
                     <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
@@ -118,10 +118,10 @@ function Todo(props) {
                 <input type="text" name="new_to_do" placeholder="To Do" value={input} onChange={ (event) => setInput(event.target.value) }></input>
             </label>
             <button id="add-new-task" onClick={ () => setTodos([...todos, {todoDescription: input, id: nanoid()}])  }>add to do</button>
-        </form>
+        </form> */}
 
     </>
     );
 }
 
-export default Todo;
+export default Todo2;
