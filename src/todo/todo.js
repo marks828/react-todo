@@ -29,7 +29,7 @@ function Todo(props) {
         setTodos(deleteTodoFromList)
     }
 
-    function editTodo(id, newName) {
+    function updateEditingStatus(id, newName) {
         const editedTodoList = todos.map(todo =>{
             if(id === todo.id){
                 return{...todo, isEditing: !todo.isEditing}
@@ -54,7 +54,7 @@ function Todo(props) {
                         {todoItem.todoDescription}
                     </p>
                     <button
-                        onClick={()=> editTodo(todoItem.id)}
+                        onClick={()=> updateEditingStatus(todoItem.id)}
                     >Edit</button>
                     <button 
                         onClick={ () => deleteTodo(todoItem.id)}
