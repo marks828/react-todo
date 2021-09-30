@@ -93,34 +93,8 @@ function Todo2(props) {
     
     return(
         <> 
-        {isEditing ? isEditingisFalse : isEditingisTrue}
-        {/* <ul>
-            {todos.map((todoItem) =>
-                <li>
-                    <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
-                        <input 
-                            type="checkbox"
-                            onChange={() => toggleTodoCompleted(todoItem.id)}
-                        >
-                        </input>
-                        {todoItem.todoDescription}
-                    </p>
-                    <button>Edit</button>
-                    <button 
-                        onClick={ () => deleteTodo(todoItem.id)}
-                    >Delete</button>
-                </li>
-            )}
-        </ul>
-        <form onSubmit={handleSubmit}>
-            <label type="text" name="New To Do" for="new_to_do">
-                <p>New Todo</p>
-                <input type="text" name="new_to_do" placeholder="To Do" value={input} onChange={ (event) => setInput(event.target.value) }></input>
-            </label>
-            <button id="add-new-task" onClick={ () => setTodos([...todos, {todoDescription: input, id: nanoid()}])  }>add to do</button>
-        </form> */}
-
-    </>
+            {isEditing ? isEditingisFalse : isEditingisTrue}
+        </>
     );
 }
 
