@@ -1,5 +1,5 @@
 import './App.css';
-import Todo from './todo/Todo';
+import Todo from './todo/todo';
 
 function App() {
   return (
@@ -8,6 +8,6 @@ function App() {
       <Todo />
     </div>
   );
-}
+} 
 
 export default App;
