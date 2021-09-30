@@ -6,7 +6,7 @@ function Todo(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState('')
-    const [isEditing, setIsEditing] = useState(false)
+    // const [isEditing, setIsEditing] = useState(false)
 
     function handleSubmit(e){
         e.preventDefault();
@@ -38,7 +38,7 @@ function Todo(props) {
             return todo
         })
         console.log(editedTodoList)
-        return setIsEditing(editedTodoList)
+        // return setIsEditing(editedTodoList)
     }
      
     return(
