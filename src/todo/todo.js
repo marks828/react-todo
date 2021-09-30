@@ -45,6 +45,7 @@ function Todo(props) {
         <ul>
             {todos.map((todoItem) =>
                 <li>
+                    {todoItem.isEditing ? <input></input> : <p>hello</p>}
                     <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
                         <input 
                             type="checkbox"
