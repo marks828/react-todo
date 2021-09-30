@@ -40,7 +40,7 @@ function Todo(props) {
         console.log(editedTodoList)
         return setIsEditing(editedTodoList)
     }
-    
+     
     return(
         <> 
         <ul>
