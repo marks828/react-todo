@@ -6,7 +6,6 @@ function Todo(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState('')
-    const [isEditing, setIsEditing] = useState(false)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -40,29 +39,53 @@ function Todo(props) {
         return setTodos(editedTodoList)
     }
 
+    // function saveNewName(e, id) {
+    //     const newName = todos.map(todo => {
+    //         if (id === todo.id) {
+    //             return { ...todo, todoDescription: e.target.value }
+    //         }
+    //         return todo
+    //     })
+    //     return setTodos(newName)
+    // }
+
     return (
         <>
             <ul>
                 {todos.map((todoItem) =>
-                    todoItem.isEditing ? <> <p>hello</p></> :
-                        <>
-                            <li>
-                                <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
-                                    <input
-                                        type="checkbox"
-                                        onChange={() => toggleTodoCompleted(todoItem.id)}
-                                    >
-                                    </input>
-                                    {todoItem.todoDescription}
-                                </p>
+                    todoItem.isEditing ?
+                        <li>
+                            <form>
+                                <input placeholder={todoItem.todoDescription}></input>
+
+                                <button
+                                // onClick={saveNewName(todoItem.id)}
+                                >Save</button>
                                 <button
                                     onClick={() => updateEditingStatus(todoItem.id)}
-                                >Edit</button>
-                                <button
-                                    onClick={() => deleteTodo(todoItem.id)}
-                                >Delete</button>
-                            </li>
-                        </>
+                                >Cancle</button>
+                            </form>
+                        </li>
+
+                        :
+
+                        <li>
+                            <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
+                                <input
+                                    type="checkbox"
+                                    onChange={() => toggleTodoCompleted(todoItem.id)}
+                                >
+                                </input>
+                                {todoItem.todoDescription}
+                            </p>
+                            <button
+                                onClick={() => updateEditingStatus(todoItem.id)}
+                            >Edit</button>
+                            <button
+                                onClick={() => deleteTodo(todoItem.id)}
+                            >Delete</button>
+                        </li>
+
 
 
                 )}
