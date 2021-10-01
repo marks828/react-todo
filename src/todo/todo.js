@@ -6,7 +6,7 @@ function Todo(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState('')
-    // const [isEditing, setIsEditing] = useState(false)
+    const [isEditing, setIsEditing] = useState(false)
 
     function handleSubmit(e){
         e.preventDefault();
@@ -31,14 +31,13 @@ function Todo(props) {
 
     function updateEditingStatus(id) {
         const editedTodoList = todos.map(todo =>{
-            // console.log(todo.isEditing)
             if(id === todo.id){
                 return{...todo, isBeingEdited: !todo.isBeingEdited}
             };
             return todo
         })
         console.log(editedTodoList)
-        // return setIsEditing(editedTodoList)
+        return setIsEditing(editedTodoList)
     }
      
     return(
@@ -46,7 +45,7 @@ function Todo(props) {
         <ul>
             {todos.map((todoItem) =>
                 <li>
-                    {todoItem.isEditing ?  <input></input> : <p>hello</p>}
+                    {todoItem.isBeingEdited ? <p>hello</p> : <input></input>}
                     <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
                         <input 
                             type="checkbox"
