@@ -6,6 +6,7 @@ function Todo(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState('')
+    const [updatedTodo, setUpdatedTodo] = useState()
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -28,7 +29,7 @@ function Todo(props) {
         setTodos(deleteTodoFromList)
     }
 
-    function updateEditingStatus(id) {
+    function updateEditingStatus(id, newName) {
         const editedTodoList = todos.map(todo => {
             if (id === todo.id) {
                 return { ...todo, isEditing: !todo.isEditing }
@@ -39,15 +40,12 @@ function Todo(props) {
         return setTodos(editedTodoList)
     }
 
-    // function saveNewName(e, id) {
-    //     const newName = todos.map(todo => {
-    //         if (id === todo.id) {
-    //             return { ...todo, todoDescription: e.target.value }
-    //         }
-    //         return todo
-    //     })
-    //     return setTodos(newName)
-    // }
+    function handleUpdateToTodo(id, updatedTodo) {
+        const updatedItem = todos.map((todo) => {
+            return todo.id === id ? updatedTodo : todo;
+        })
+
+    }
 
     return (
         <>
@@ -55,12 +53,11 @@ function Todo(props) {
                 {todos.map((todoItem) =>
                     todoItem.isEditing ?
                         <li>
-                            <form>
+                            <form onSubmit={handleSubmit}>
                                 <input placeholder={todoItem.todoDescription}></input>
 
                                 <button
-                                // onClick={saveNewName(todoItem.id)}
-                                >Save</button>
+                                    onClick={() => setTodos([...todos, { todoDescription: input }])}>Save</button>
                                 <button
                                     onClick={() => updateEditingStatus(todoItem.id)}
                                 >Cancle</button>
