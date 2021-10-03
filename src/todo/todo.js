@@ -24,7 +24,7 @@ function Todo(props) {
         setTodos(updatedTodos)
     }
 
-    function updateEditStatus(id, newName) {
+    function updateEditStatus(id) {
         const editedTodoList = todos.map(todo => {
             if (id === todo.id) {
                 return { ...todo, isEditing: !todo.isEditing }
@@ -46,6 +46,8 @@ function Todo(props) {
         e.preventDefault()
         handleUpdatedTodo(updatedTodo.id, updatedTodo)
         console.log("saved clicked")
+        console.log(updatedTodo)
+        updateEditStatus(!updatedTodo.isEditing)
     }
 
 
@@ -67,7 +69,7 @@ function Todo(props) {
                                 ></input>
 
                                 <button
-                                    onClick={() => setUpdatedTodo([...todos, { todoDescription: input }])}>Save</button>
+                                    onClick={() => setUpdatedTodo([...todos, { todoDescription: input, isEditing: false }])}>Save</button>
                                 <button
                                     onClick={() => updateEditStatus(todoItem.id)}
                                 >Cancle</button>
