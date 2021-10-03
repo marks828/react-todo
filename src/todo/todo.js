@@ -6,7 +6,7 @@ function Todo(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState('')
-    const [updatedTodo, setUpdatedTodo] = useState()
+    const [updatedTodo, setUpdatedTodo] = useState({})
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -24,12 +24,7 @@ function Todo(props) {
         setTodos(updatedTodos)
     }
 
-    function deleteTodo(id) {
-        const deleteTodoFromList = todos.filter(todo => id !== todo.id)
-        setTodos(deleteTodoFromList)
-    }
-
-    function updateEditingStatus(id, newName) {
+    function updateEditStatus(id, newName) {
         const editedTodoList = todos.map(todo => {
             if (id === todo.id) {
                 return { ...todo, isEditing: !todo.isEditing }
@@ -40,12 +35,25 @@ function Todo(props) {
         return setTodos(editedTodoList)
     }
 
-    function handleUpdateToTodo(id, updatedTodo) {
-        const updatedItem = todos.map((todo) => {
-            return todo.id === id ? updatedTodo : todo;
-        })
-
+    function handleUpdatedTodo(id, updatedTodoDescrition) {
+        const updatedItem = todos.map(todo => {
+            return todo.id === id ? updatedTodoDescrition : todo;
+        });
+        setTodos(updatedItem)
     }
+
+    function handleSaveTodoSubmit(e) {
+        e.preventDefault()
+        handleUpdatedTodo(updatedTodo.id, updatedTodo)
+        console.log("saved clicked")
+    }
+
+
+    function deleteTodo(id) {
+        const deleteTodoFromList = todos.filter(todo => id !== todo.id)
+        setTodos(deleteTodoFromList)
+    }
+
 
     return (
         <>
@@ -53,13 +61,15 @@ function Todo(props) {
                 {todos.map((todoItem) =>
                     todoItem.isEditing ?
                         <li>
-                            <form onSubmit={handleSubmit}>
-                                <input placeholder={todoItem.todoDescription}></input>
+                            <form onSubmit={handleSaveTodoSubmit}>
+                                <input
+                                    placeholder={todoItem.todoDescription}
+                                ></input>
 
                                 <button
-                                    onClick={() => setTodos([...todos, { todoDescription: input }])}>Save</button>
+                                    onClick={() => setUpdatedTodo([...todos, { todoDescription: input }])}>Save</button>
                                 <button
-                                    onClick={() => updateEditingStatus(todoItem.id)}
+                                    onClick={() => updateEditStatus(todoItem.id)}
                                 >Cancle</button>
                             </form>
                         </li>
@@ -76,7 +86,7 @@ function Todo(props) {
                                 {todoItem.todoDescription}
                             </p>
                             <button
-                                onClick={() => updateEditingStatus(todoItem.id)}
+                                onClick={() => updateEditStatus(todoItem.id)}
                             >Edit</button>
                             <button
                                 onClick={() => deleteTodo(todoItem.id)}
