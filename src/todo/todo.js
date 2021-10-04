@@ -64,6 +64,7 @@ function Todo(props) {
             <ul>
             {todos.map((todoItem) =>
                 <TodoItem
+                    todoItem = {todoItem}
                     deleteTodo = {deleteTodo}
                     toggleTodoCompleted = {toggleTodoCompleted}
                     updateEditStatus = {updateEditStatus}
