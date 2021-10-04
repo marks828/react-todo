@@ -6,23 +6,10 @@ function TodoItem(props) {
     const [todos, setTodos] = useState(dummyData);
     const [editingInput, setEditingInput] = useState()
 
-    function toggleTodoCompleted(id) {
-        const updatedTodos = todos.map(todo => {
-            if (id === todo.id) {
-                return { ...todo, completed: !todo.completed }
-            }
-            return todo;
-        });
-        console.log(updatedTodos)
-        setTodos(updatedTodos)
-    }
+    
 
-    function deleteTodo(id) {
-        const deleteTodoFromList = todos.filter(todo => id !== todo.id)
-        setTodos(deleteTodoFromList)
-    }
-
-
+return(
+    <>
     {todos.map((todoItem) =>
             todoItem.isEditing ?
                 <li>
@@ -32,7 +19,8 @@ function TodoItem(props) {
                         ></input>
 
                         <button
-                            onClick={() => setUpdatedTodo([...todos, { todoDescription: input, isEditing: false }])}>Save
+                            onClick={() => setUpdatedTodo([...todos, { todoDescription: input, isEditing: false }])}
+                        >Save
                         </button>
                         <button
                             // onClick={() => updateEditStatus(todoItem.id)}
@@ -63,6 +51,8 @@ function TodoItem(props) {
 
         )
     }
+    </>
+    )
 
 }
 export default TodoItem;
