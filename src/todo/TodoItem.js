@@ -6,12 +6,10 @@ function TodoItem(props) {
     const [todos, setTodos] = useState(dummyData);
     const [editingInput, setEditingInput] = useState()
 
-    
-
 return(
     <>
     
-            todoItem.isEditing ?
+            props.todoItem.isEditing ?
                 <li>
                     <form onSubmit={handleSaveTodoSubmit}>
                         <input
