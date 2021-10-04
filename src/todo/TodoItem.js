@@ -4,7 +4,7 @@ import { dummyData } from "../dummydata/dummyData"
 function TodoItem(props) {
 
     const [todos, setTodos] = useState(dummyData);
-    const [editingInput, setEditingInput] = ()
+    const [editingInput, setEditingInput] = useState()
 
     function toggleTodoCompleted(id) {
         const updatedTodos = todos.map(todo => {
