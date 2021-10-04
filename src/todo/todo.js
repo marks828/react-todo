@@ -14,42 +14,61 @@ function Todo(props) {
         setInput('')
     }
 
+    function toggleTodoCompleted(id) {
+        const updatedTodos = todos.map(todo => {
+            if (id === todo.id) {
+                return { ...todo, completed: !todo.completed }
+            }
+            return todo;
+        });
+        console.log(updatedTodos)
+        setTodos(updatedTodos)
+    }
 
-    // function updateEditStatus(id) {
-    //     const editedTodoList = todos.map(todo => {
-    //         if (id === todo.id) {
-    //             return { ...todo, isEditing: !todo.isEditing }
-    //         };
-    //         return todo
-    //     })
-    //     console.log(editedTodoList)
-    //     return setTodos(editedTodoList)
-    // }
+
+    function updateEditStatus(id) {
+        const editedTodoList = todos.map(todo => {
+            if (id === todo.id) {
+                return { ...todo, isEditing: !todo.isEditing }
+            };
+            return todo
+        })
+        console.log(editedTodoList)
+        return setTodos(editedTodoList)
+    }
     
 
-    // function handleUpdatedTodo(id, updatedTodoDescrition) {
-    //     const updatedItem = todos.map(todo => {
-    //         return todo.id === id ? updatedTodoDescrition : todo;
-    //     });
-    //     setTodos(updatedItem)
-    // }
+    function handleUpdatedTodo(id, updatedTodoDescrition) {
+        const updatedItem = todos.map(todo => {
+            return todo.id === id ? updatedTodoDescrition : todo;
+        });
+        setTodos(updatedItem)
+    }
 
-    // function handleSaveTodoSubmit(e) {
-    //     e.preventDefault()
-    //     handleUpdatedTodo(updatedTodo.id, updatedTodo)
-    //     console.log("saved clicked")
-    //     console.log(updatedTodo)
-    //     updateEditStatus(!updatedTodo.isEditing)
-    // }
+    function handleSaveTodoSubmit(e) {
+        e.preventDefault()
+        handleUpdatedTodo(updatedTodo.id, updatedTodo)
+        console.log("saved clicked")
+        console.log(updatedTodo)
+        updateEditStatus(!updatedTodo.isEditing)
+    }
 
-
-    
+    function deleteTodo(id) {
+        const deleteTodoFromList = todos.filter(todo => id !== todo.id)
+        setTodos(deleteTodoFromList)
+    }
 
 
     return (
         <>
             <ul>
-                <TodoItem />
+                <TodoItem
+                    deleteTodo = {deleteTodo}
+                    toggleTodoCompleted = {toggleTodoCompleted}
+                    updateEditStatus = {updateEditStatus}
+                    handleUpdatedTodo = {handleUpdatedTodo}
+                    handleSaveTodoSubmit = {handleSaveTodoSubmit}
+                />
             </ul>
             <form onSubmit={handleSubmit}>
                 <label type="text" name="New To Do" for="new_to_do">
