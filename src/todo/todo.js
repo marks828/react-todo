@@ -70,7 +70,7 @@ function Todo(props) {
                     handleUpdatedTodo = {handleUpdatedTodo}
                     handleSaveTodoSubmit = {handleSaveTodoSubmit}
                 />
-            }
+            )}
             </ul>
             <form onSubmit={handleSubmit}>
                 <label type="text" name="New To Do" for="new_to_do">
