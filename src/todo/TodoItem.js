@@ -10,7 +10,7 @@ function TodoItem(props) {
 
 return(
     <>
-    {todos.map((todoItem) =>
+    
             todoItem.isEditing ?
                 <li>
                     <form onSubmit={handleSaveTodoSubmit}>
@@ -46,11 +46,6 @@ return(
                         onClick={() => deleteTodo(todoItem.id)}
                     >Delete</button>
                 </li>
-
-
-
-        )
-    }
     </>
     )
 
