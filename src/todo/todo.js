@@ -46,6 +46,16 @@ function Todo(props) {
         const deleteTodoFromList = todos.filter(todo => id !== todo.id)
         setTodos(deleteTodoFromList)
     }
+    
+    function updateName(id, newName){
+        const editedTodoList = todos.map(todo => {
+            if (id === todo.id) {
+                return { ...todo, todoDescription: newName }
+            };
+            return todo
+        })
+        return setTodos(editedTodoList)
+    }
 
 
     return (
@@ -59,6 +69,7 @@ function Todo(props) {
                     toggleTodoCompleted = {toggleTodoCompleted}
                     updateEditStatus = {updateEditStatus}
                     handleUpdatedTodo = {handleUpdatedTodo}
+                    updateName = {updateName}
                 />
             )}
             </ul>
