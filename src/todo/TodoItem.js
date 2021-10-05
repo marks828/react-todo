@@ -9,19 +9,19 @@ function TodoItem(props) {
 return(
     <>
     
-            props.todoItem.isEditing ?
+            todoItem.isEditing ?
                 <li>
-                    <form onSubmit={handleSaveTodoSubmit}>
+                    <form onSubmit={props.handleSaveTodoSubmit}>
                         <input
-                            placeholder={todoItem.todoDescription}
+                            placeholder={props.todoItem.todoDescription}
                         ></input>
 
                         <button
-                            onClick={() => setUpdatedTodo([...todos, { todoDescription: input, isEditing: false }])}
+                            onChange={() => props.setUpdatedTodo([...todos, { todoDescription: props.input, isEditing: false }])}
                         >Save
                         </button>
                         <button
-                            // onClick={() => updateEditStatus(todoItem.id)}
+                            onClick={() => props.updateEditStatus(props.todoItem.id)}
                         >Cancle</button>
                     </form>
                 </li>
@@ -29,19 +29,19 @@ return(
                 :
 
                 <li>
-                    <p id={todoItem.id} className={todoItem.completed ? 'completed' : 'not-completed'}>
+                    <p id={props.todoItem.id} className={props.todoItem.completed ? 'completed' : 'not-completed'}>
                         <input
                             type="checkbox"
-                            onChange={() => toggleTodoCompleted(todoItem.id)}
+                            onChange={() => props.toggleTodoCompleted(props.todoItem.id)}
                         >
                         </input>
-                        {todoItem.todoDescription}
+                        {props.todoItem.todoDescription}
                     </p>
                     <button
-                        onClick={() => updateEditStatus(todoItem.id)}
+                        onClick={() => props.updateEditStatus(props.todoItem.id)}
                     >Edit</button>
                     <button
-                        onClick={() => deleteTodo(todoItem.id)}
+                        onClick={() => props.deleteTodo(props.todoItem.id)}
                     >Delete</button>
                 </li>
     </>
