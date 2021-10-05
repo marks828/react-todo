@@ -21,7 +21,6 @@ function Todo(props) {
             }
             return todo;
         });
-        console.log(updatedTodos)
         setTodos(updatedTodos)
     }
 
@@ -33,7 +32,6 @@ function Todo(props) {
             };
             return todo
         })
-        console.log(editedTodoList)
         return setTodos(editedTodoList)
     }
     
@@ -48,8 +46,6 @@ function Todo(props) {
     function handleSaveTodoSubmit(e) {
         e.preventDefault()
         handleUpdatedTodo(updatedTodo.id, updatedTodo)
-        console.log("saved clicked")
-        console.log(updatedTodo)
         updateEditStatus(!updatedTodo.isEditing)
     }
 
