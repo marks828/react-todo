@@ -48,6 +48,7 @@ function Todo(props) {
     }
     
     function updateName(id, newName){
+        console.log(id, newName)
         const editedTodoList = todos.map(todo => {
             if (id === todo.id) {
                 return { ...todo, todoDescription: newName }
