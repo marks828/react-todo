@@ -4,7 +4,7 @@ import { dummyData } from "../dummydata/dummyData"
 function TodoItem(props) {
 
     const [todos, setTodos] = useState(dummyData);
-    const [nameValue, setNameValue] = useState()
+    const [nameValue, setNameValue] = useState("")
 
 return(
     <>

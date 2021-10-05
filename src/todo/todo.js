@@ -60,6 +60,7 @@ function Todo(props) {
             <ul>
             {todos.map((todoItem) =>
                 <TodoItem
+                    todos = {todos}
                     todoItem = {todoItem}
                     deleteTodo = {deleteTodo}
                     toggleTodoCompleted = {toggleTodoCompleted}
