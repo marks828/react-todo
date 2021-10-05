@@ -55,7 +55,8 @@ function Todo(props) {
             };
             return todo
         })
-        return setTodos(editedTodoList)
+        console.log(editedTodoList)
+        setTodos(editedTodoList)
     }
 
 
