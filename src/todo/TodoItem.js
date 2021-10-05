@@ -3,7 +3,6 @@ import { dummyData } from "../dummydata/dummyData"
 
 function TodoItem(props) {
 
-    const [todos, setTodos] = useState(dummyData);
     const [nameValue, setNameValue] = useState("")
 
 return(
@@ -11,7 +10,6 @@ return(
     
         {props.todoItem.isEditing ?
             <li>
-                <form onSubmit={props.handleSaveTodoSubmit}>
                     <input
                         value = {nameValue}
                         placeholder={props.todoItem.todoDescription}
@@ -19,13 +17,15 @@ return(
                     ></input>
 
                     <button
-                        onClick={() => props.setTodos([...props.todos, { todoDescription: nameValue, isEditing: false }])}
+                        onClick={() => {
+                            props.updateName(props.todoItem.id, newName)
+                            props.updateEditStatus(props.todoItem.id)
+                        }}
                     >Save
                     </button>
                     <button
                         onClick={() => props.updateEditStatus(props.todoItem.id)}
                     >Cancle</button>
-                </form>
             </li>
 
             :
