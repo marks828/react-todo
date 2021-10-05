@@ -7,7 +7,6 @@ function Todo(props) {
 
     const [todos, setTodos] = useState(dummyData);
     const [input, setInput] = useState('')
-    const [updatedTodo, setUpdatedTodo] = useState({})
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -43,12 +42,6 @@ function Todo(props) {
         setTodos(updatedItem)
     }
 
-    function handleSaveTodoSubmit(e) {
-        e.preventDefault()
-        handleUpdatedTodo(updatedTodo.id, updatedTodo)
-        updateEditStatus(!updatedTodo.isEditing)
-    }
-
     function deleteTodo(id) {
         const deleteTodoFromList = todos.filter(todo => id !== todo.id)
         setTodos(deleteTodoFromList)
@@ -66,7 +59,6 @@ function Todo(props) {
                     toggleTodoCompleted = {toggleTodoCompleted}
                     updateEditStatus = {updateEditStatus}
                     handleUpdatedTodo = {handleUpdatedTodo}
-                    handleSaveTodoSubmit = {handleSaveTodoSubmit}
                 />
             )}
             </ul>

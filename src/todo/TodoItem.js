@@ -19,7 +19,7 @@ return(
                     ></input>
 
                     <button
-                        onClick={() => props.setUpdatedTodo([...props.todos, { todoDescription: nameValue, isEditing: false }])}
+                        onClick={() => props.setTodos([...props.todos, { todoDescription: nameValue, isEditing: false }])}
                     >Save
                     </button>
                     <button
