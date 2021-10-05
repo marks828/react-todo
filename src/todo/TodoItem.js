@@ -18,7 +18,7 @@ return(
 
                     <button
                         onClick={() => {
-                            props.updateName(props.todoItem.id, newName)
+                            props.updateName(props.todoItem.id, nameValue)
                             props.updateEditStatus(props.todoItem.id)
                         }}
                     >Save
